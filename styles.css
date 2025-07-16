@@ -390,6 +390,7 @@ main {
 
 .form-group {
   margin-bottom: 20px;
+  position: relative;
 }
 
 /* Form row for side-by-side fields */
@@ -433,6 +434,13 @@ main {
   box-shadow: 0 0 10px rgba(40, 45, 135, 0.2);
 }
 
+/* Input con dropdown activo */
+.form-group input.dropdown-active {
+  border-color: var(--aca-blue);
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 0 10px rgba(40, 45, 135, 0.2);
+}
+
 /* Estados de validación */
 .form-group input.valid {
   border-color: var(--success-green);
@@ -470,28 +478,8 @@ main {
 }
 
 /* Dropdown search results */
-.dropdown-results {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: var(--white);
-  border: 2px solid var(--border-gray);
-  border-top: none;
-  border-radius: 0 0 8px 8px;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 1000;
-  display: none;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-results.show {
-  display: block;
-}
-
 .dropdown-item {
-  padding: 12px;
+  padding: 10px 15px;
   cursor: pointer;
   border-bottom: 1px solid var(--border-gray);
   transition: background-color 0.2s ease;
@@ -501,6 +489,48 @@ main {
   background-color: var(--light-gray);
 }
 
+.dropdown-item.selected {
+  background-color: var(--aca-blue);
+  color: var(--white);
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border: 2px solid var(--aca-blue);
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 2000;
+  display: none;
+  box-shadow: 0 8px 25px rgba(40, 45, 135, 0.15);
+}
+
+.dropdown-results.show {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 12px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-gray);
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+}
+
+.dropdown-item:hover {
+  background-color: var(--aca-orange);
+  color: var(--white);
+}
+
 .dropdown-item:last-child {
   border-bottom: none;
 }
@@ -508,6 +538,14 @@ main {
 .dropdown-item.selected {
   background-color: var(--aca-blue);
   color: var(--white);
+}
+
+.no-results {
+  padding: 15px;
+  text-align: center;
+  color: var(--text-gray);
+  font-style: italic;
+  font-size: 0.9rem;
 }
 
 .clarifications {
@@ -528,6 +566,7 @@ main {
 .table-container {
   margin-bottom: 20px;
   overflow-x: auto;
+  overflow-y: visible;
   background-color: var(--white);
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -546,7 +585,7 @@ table {
   border-collapse: collapse;
   background-color: var(--white);
   border-radius: 12px 12px 0 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 table th,
@@ -554,6 +593,7 @@ table td {
   padding: 15px;
   text-align: left;
   border-bottom: 1px solid var(--border-gray);
+  position: relative;
 }
 
 table th {
@@ -833,8 +873,8 @@ footer p {
   #unitsTable tr {
     background-color: var(--white) !important;
     border: 1px solid var(--border-gray) !important;
-    margin-bottom: 15px !important;
-    padding: 15px !important;
+    margin-bottom: 20px !important;
+    padding: 20px !important;
     border-radius: 8px !important;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
   }
@@ -846,17 +886,18 @@ footer p {
   #unitsTable td {
     border: none !important;
     border-bottom: none !important;
-    padding: 12px 0 !important;
+    padding: 15px 0 !important;
     position: relative !important;
     display: flex !important;
     align-items: center !important;
-    min-height: 50px !important;
+    min-height: 60px !important;
     background-color: transparent !important;
   }
 
   #unitsTable td:last-child {
     border-bottom: none !important;
-    padding-top: 15px !important;
+    padding-top: 20px !important;
+    padding-bottom: 10px !important;
   }
 
   td:before {
@@ -865,26 +906,99 @@ footer p {
     left: 0;
     top: 50%;
     transform: translateY(-50%);
-    width: 30%;
+    width: 35%;
     padding-right: 10px;
     white-space: nowrap;
     font-weight: 600;
     color: var(--aca-blue);
     display: flex;
     align-items: center;
+    font-size: 14px;
   }
 
   td input,
   td button {
-    width: 65%;
-    margin-left: 35%;
+    width: 60%;
+    margin-left: 40%;
     margin-top: 0;
     margin-bottom: 0;
+    height: 45px;
+    min-height: 45px;
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  td select {
+    width: 60%;
+    margin-left: 40%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-height: 45px;
+    height: 45px;
+    background-color: white;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><polygon points="8,12 3,6 13,6" fill="%23666"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 16px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-sizing: border-box;
+  }
+
+  td select:focus {
+    outline: none;
+    border-color: #282d87;
+    box-shadow: 0 0 0 2px rgba(40, 45, 135, 0.2);
+  }
+
+  td select:disabled {
+    background-color: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><polygon points="8,12 3,6 13,6" fill="%23ccc"/></svg>');
   }
 
   td button {
     width: auto;
-    margin-left: 35%;
+    margin-left: 40%;
+    padding: 10px 15px;
+    min-width: 80px;
+  }
+
+  /* Labels específicos para móvil */
+  #unitsTable td[data-label="Marca"]:before {
+    content: "Marca:";
+  }
+
+  #unitsTable td[data-label="Modelo"]:before {
+    content: "Modelo:";
+  }
+
+  #unitsTable td[data-label="Versión"]:before {
+    content: "Versión:";
+  }
+
+  #unitsTable td[data-label="Cantidad"]:before {
+    content: "Cant:";
+  }
+
+  #unitsTable td[data-label="Acciones"]:before {
+    content: "";
+  }
+
+  /* Estilos específicos para el input de cantidad en móvil */
+  td input[type="number"] {
+    width: 80px;
+    margin-left: 40%;
+    text-align: center;
+    min-width: 80px;
+    max-width: 80px;
   }
 
   .aca-logo {
@@ -1010,4 +1124,466 @@ footer p {
 
 .error-message-global li {
   margin-bottom: 5px;
+}
+
+/* Dropdown items */
+.dropdown-item {
+  padding: 12px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-gray);
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item:hover {
+  background-color: var(--light-gray);
+}
+
+.dropdown-item.selected {
+  background-color: var(--aca-blue);
+  color: var(--white);
+}
+
+/* No results message */
+.no-results {
+  padding: 15px;
+  text-align: center;
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+/* ================================
+   MODAL STYLES
+   ================================ */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: var(--white);
+  margin: 5% auto;
+  padding: 0;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
+}
+
+.modal-header {
+  background-color: var(--aca-blue);
+  color: var(--white);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.close {
+  color: var(--white);
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+  line-height: 1;
+}
+
+.close:hover {
+  opacity: 0.8;
+}
+
+.modal-body {
+  padding: 20px;
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.modal-body input {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid var(--border-gray);
+  border-radius: 8px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+.modal-body input:focus {
+  outline: none;
+  border-color: var(--aca-blue);
+}
+
+.search-results {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid var(--border-gray);
+  border-radius: 8px;
+  background-color: var(--white);
+}
+
+.search-result-item {
+  padding: 12px 15px;
+  border-bottom: 1px solid var(--border-gray);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.search-result-item:last-child {
+  border-bottom: none;
+}
+
+.search-result-item:hover {
+  background-color: var(--light-gray);
+}
+
+.search-result-item.selected {
+  background-color: var(--aca-blue);
+  color: var(--white);
+}
+
+.search-result-brand {
+  font-weight: bold;
+  color: var(--aca-blue);
+}
+
+.search-result-model {
+  margin-left: 10px;
+  color: var(--text-gray);
+}
+
+.search-result-version {
+  margin-left: 10px;
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+.no-results {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-gray);
+  font-style: italic;
+}
+
+/* ================================
+   BUTTON SEARCH STYLES
+   ================================ */
+.btn-search {
+  background-color: var(--aca-orange);
+  color: var(--white);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-left: 10px;
+}
+
+.btn-search:hover {
+  background-color: var(--aca-orange-dark);
+}
+
+.btn-search:active {
+  transform: translateY(1px);
+}
+
+/* ================================
+   VEHICLE FIELD STYLES
+   ================================ */
+.vehicle-field-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vehicle-field-container input {
+  flex: 1;
+}
+
+.vehicle-cascade-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.vehicle-cascade-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.vehicle-cascade-row select {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--border-gray);
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.vehicle-cascade-row select:focus {
+  outline: none;
+  border-color: var(--aca-blue);
+}
+
+.vehicle-cascade-row select:disabled {
+  background-color: var(--light-gray);
+  color: var(--text-gray);
+}
+
+/* ================================
+   RESPONSIVE MODAL STYLES
+   ================================ */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95%;
+    margin: 10% auto;
+    max-height: 85vh;
+  }
+
+  .modal-header {
+    padding: 15px;
+  }
+
+  .modal-body {
+    padding: 15px;
+    max-height: 70vh;
+  }
+
+  .vehicle-cascade-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .vehicle-cascade-row select {
+    width: 100%;
+  }
+
+  .btn-search {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+}
+
+/* Estilos para dropdown simple de vehículos */
+.simple-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-option {
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.dropdown-option:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdown-option:active {
+  background-color: #e9ecef;
+}
+
+/* Estilos para selects de vehículos */
+#unitsTable {
+  table-layout: fixed;
+  width: 100%;
+}
+
+#unitsTable select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><polygon points="6,8 2,4 10,4" fill="%23666"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  height: 38px;
+  min-height: 38px;
+  box-sizing: border-box;
+}
+
+#unitsTable select:focus {
+  outline: none;
+  border-color: #282d87;
+  box-shadow: 0 0 0 2px rgba(40, 45, 135, 0.2);
+}
+
+#unitsTable select:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><polygon points="6,8 2,4 10,4" fill="%23ccc"/></svg>');
+}
+
+#unitsTable select option {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* Estilos para las celdas de la tabla para evitar movimiento */
+#unitsTable td {
+  height: 60px;
+  min-height: 60px;
+  vertical-align: middle;
+  position: relative;
+}
+
+#unitsTable tr {
+  height: 60px;
+  min-height: 60px;
+}
+
+/* Anchos específicos para columnas */
+#unitsTable th:nth-child(1),
+#unitsTable td:nth-child(1) {
+  width: 25%;
+}
+
+#unitsTable th:nth-child(2),
+#unitsTable td:nth-child(2) {
+  width: 25%;
+}
+
+#unitsTable th:nth-child(3),
+#unitsTable td:nth-child(3) {
+  width: 25%;
+}
+
+#unitsTable th:nth-child(4),
+#unitsTable td:nth-child(4) {
+  width: 15%;
+  min-width: 80px;
+}
+
+#unitsTable th:nth-child(5),
+#unitsTable td:nth-child(5) {
+  width: 10%;
+  min-width: 100px;
+}
+
+#unitsTable input[type="number"] {
+  height: 38px;
+  min-height: 38px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 80px;
+  text-align: center;
+}
+
+/* Asegurar que td tenga posición relativa para el dropdown */
+.vehicle-table td {
+  position: relative;
+}
+
+/* Estilos para móviles - dropdown */
+@media (max-width: 600px) {
+  .dropdown-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1999;
+  }
+
+  .simple-dropdown {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 300px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    z-index: 2000;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  .dropdown-option {
+    padding: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: center;
+  }
+
+  .dropdown-option:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-option:hover {
+    background-color: #f8f9fa;
+  }
+
+  .dropdown-option:active {
+    background-color: #e9ecef;
+  }
+
+  /* Hacer que los inputs en móviles sean más grandes */
+  #unitsTable td input {
+    width: 65%;
+    margin-left: 35%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-height: 45px;
+  }
+
+  #unitsTable td input:focus {
+    outline: none;
+    border-color: #282d87;
+    box-shadow: 0 0 0 2px rgba(40, 45, 135, 0.2);
+  }
+
+  #unitsTable td input:disabled {
+    background-color: #f5f5f5;
+    color: #999;
+    cursor: not-allowed;
+  }
 }
