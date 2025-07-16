@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Solicitud de Compra de Vehículos - ACA</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="aca-brand">
+          <img src="logo.png" alt="ACA" class="aca-logo-img">
+          <div class="aca-tagline">
+            Asociación de Cooperativas Argentinas C.L.
+          </div>
+        </div>
+        <h1>Solicitud de Compra de Vehículos</h1>
+        <button class="btn-back" onclick="window.location.href='index.html'">
+          Volver
+        </button>
+      </header>
+
+      <main>
+        <form id="vehicleForm" class="form-container">
+          <div class="form-section">
+            <h3>Datos de la Cooperativa</h3>
+            <div class="form-row">
+              <div class="form-group form-group-large">
+                <label for="cooperativeName">Nombre de la Cooperativa *</label>
+                <input
+                  type="text"
+                  id="cooperativeName"
+                  name="cooperativeName"
+                  placeholder="Busque y seleccione su cooperativa"
+                  required
+                  autocomplete="off"
+                />
+                <div id="cooperativeDropdown" class="dropdown-results"></div>
+              </div>
+              <div class="form-group form-group-small">
+                <label for="cooperativeCode">Código</label>
+                <input
+                  type="text"
+                  id="cooperativeCode"
+                  name="cooperativeCode"
+                  placeholder="---"
+                  readonly
+                  tabindex="-1"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cuit">CUIT *</label>
+              <input
+                type="text"
+                id="cuit"
+                name="cuit"
+                placeholder="00-12345678-9"
+                required
+                maxlength="13"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contactEmail">Dirección de email de contacto *</label>
+              <input
+                type="email"
+                id="contactEmail"
+                name="contactEmail"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="contactPhone">Número de teléfono de contacto *</label>
+              <input
+                type="tel"
+                id="contactPhone"
+                name="contactPhone"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Detalle de las Unidades Solicitadas</h3>
+            <div class="table-container">
+              <table id="unitsTable">
+                <thead>
+                  <tr>
+                    <th>Marca *</th>
+                    <th>Modelo *</th>
+                    <th>Versión *</th>
+                    <th>Cantidad *</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Las filas se agregarán dinámicamente -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-actions">
+              <button type="button" class="btn-add" onclick="addRow()">
+                + Agregar Vehículo
+              </button>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Período de Entrega</h3>
+            <div class="form-group">
+              <label>Seleccione el período preferido:</label>
+              <div class="checkbox-group">
+                <label>
+                  <input
+                    type="radio"
+                    name="deliveryPeriod"
+                    value="Julio/Agosto"
+                  />
+                  Julio/Agosto
+                </label>
+                <label>
+                  <input
+                    type="radio"
+                    name="deliveryPeriod"
+                    value="Octubre/Noviembre"
+                  />
+                  Octubre/Noviembre
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Observaciones</h3>
+            <div class="form-group">
+              <label for="observations"
+                >Detalle cualquier observación que debamos tener en
+                cuenta:</label
+              >
+              <textarea
+                id="observations"
+                name="observations"
+                rows="4"
+                placeholder="Ingrese aquí cualquier observación adicional..."
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h3>Aclaraciones adicionales</h3>
+            <div class="clarifications">
+              <p>
+                Los precios que corresponden a la operación son los del momento
+                de la facturación de las unidades
+              </p>
+              <p>
+                El momento de entrega depende de la disponibilidad que tenga la
+                terminal automotriz
+              </p>
+            </div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary btn-orange" id="submitBtn">
+              Enviar Solicitud
+            </button>
+          </div>
+        </form>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Asociación de Cooperativas Argentinas C.L.</p>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
