@@ -682,7 +682,7 @@ footer p {
     padding: 15px;
   }
 
-  /* Stack form row on mobile - mantener orden: nombre, código */
+  /* Stack form row on mobile */
   .form-row {
     flex-direction: column;
     gap: 10px;
@@ -691,15 +691,6 @@ footer p {
   .form-group-small,
   .form-group-large {
     flex: none;
-    order: 0; /* Mantener el orden del HTML */
-  }
-
-  .form-group-large {
-    order: 1; /* Nombre primero */
-  }
-
-  .form-group-small {
-    order: 2; /* Código segundo */
   }
 
   .btn-primary,
