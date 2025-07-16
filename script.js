@@ -436,7 +436,6 @@ async function handleSubmit(event) {
   // Marcar como enviando
   isSubmitting = true;
   submitButton.disabled = true;
-  submitButton.textContent = "Enviando...";
   form.style.pointerEvents = "none";
   form.style.opacity = "0.7";
 
