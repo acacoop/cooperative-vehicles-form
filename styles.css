@@ -344,7 +344,6 @@ span {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  padding: 15px;
 }
 
 #unitsTable tr {
@@ -430,7 +429,7 @@ span {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background-color: var(--light-gray);
+
   border-top: 1px solid var(--border-gray);
 }
 
@@ -718,10 +717,6 @@ footer p {
     box-shadow: none;
     gap: 0;
     height: 60px;
-  }
-
-  #unitsTable tr:hover {
-    background-color: var(--light-gray);
   }
 
   #unitsTable th,
