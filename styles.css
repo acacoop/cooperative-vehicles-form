@@ -198,7 +198,6 @@ span {
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
   position: relative;
 }
 
@@ -404,7 +403,7 @@ span {
 
 #unitsTable input[type="number"] {
   text-align: center;
-  max-width: 120px;
+
   align-self: flex-start;
 }
 
@@ -720,7 +719,7 @@ footer p {
   #unitsTable td {
     display: table-cell;
     padding: 10px;
-    border-bottom: 1px solid var(--border-gray);
+
     vertical-align: middle;
     position: relative;
   }
@@ -752,7 +751,7 @@ footer p {
   }
 
   #unitsTable input[type="number"] {
-    max-width: 80px;
+    max-width: 100%;
     align-self: center;
   }
 
