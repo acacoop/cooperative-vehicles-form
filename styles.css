@@ -195,6 +195,7 @@ span {
   border-radius: 8px;
   border-left: 3px solid var(--aca-blue);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  gap: 15px;
 }
 
 .form-section h3 {
@@ -210,10 +211,10 @@ span {
   position: relative;
 }
 
-/* Form row for side-by-side fields */
 .form-row {
   display: flex;
   flex-direction: column;
+
   gap: 15px;
 }
 
@@ -675,6 +676,7 @@ footer p {
 
   .form-row {
     flex-direction: row;
+
     gap: 15px;
   }
 
@@ -757,7 +759,6 @@ footer p {
     width: 100%;
     font-size: 14px;
     min-height: 38px;
-    /* Agregar text overflow para tablet/desktop también */
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
