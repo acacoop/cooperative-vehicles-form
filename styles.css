@@ -163,6 +163,16 @@ main {
   padding: 15px 10px;
   display: flex;
   flex-direction: column;
+
+  align-items: center;
+}
+
+.cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
 }
 
 /* Form container */
@@ -403,7 +413,6 @@ span {
 
 #unitsTable input[type="number"] {
   text-align: center;
-
   align-self: flex-start;
 }
 
