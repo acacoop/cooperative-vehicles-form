@@ -11,7 +11,7 @@
     <div class="container">
       <header>
         <div class="aca-brand">
-          <img src="logo.png" alt="ACA" class="aca-logo-img">
+          <img src="logo.png" alt="ACA" class="aca-logo-img" />
           <div class="aca-tagline">
             Asociación de Cooperativas Argentinas C.L.
           </div>
@@ -28,7 +28,9 @@
             <h3>Datos de la Cooperativa</h3>
             <div class="form-row">
               <div class="form-group form-group-large">
-                <label for="cooperativeName">Nombre de la Cooperativa *</label>
+                <label for="cooperativeName"
+                  >Nombre de la Cooperativa <span>*</span></label
+                >
                 <input
                   type="text"
                   id="cooperativeName"
@@ -53,19 +55,22 @@
             </div>
 
             <div class="form-group">
-              <label for="cuit">CUIT *</label>
+              <label for="cuit">CUIT <span>*</span></label>
               <input
                 type="text"
                 id="cuit"
                 name="cuit"
                 placeholder="00-12345678-9"
                 required
+                readonly
                 maxlength="13"
               />
             </div>
 
             <div class="form-group">
-              <label for="contactEmail">Dirección de email de contacto *</label>
+              <label for="contactEmail"
+                >Dirección de email de contacto <span>*</span></label
+              >
               <input
                 type="email"
                 id="contactEmail"
@@ -75,7 +80,9 @@
             </div>
 
             <div class="form-group">
-              <label for="contactPhone">Número de teléfono de contacto *</label>
+              <label for="contactPhone"
+                >Número de teléfono de contacto <span>*</span></label
+              >
               <input
                 type="tel"
                 id="contactPhone"
@@ -91,10 +98,10 @@
               <table id="unitsTable">
                 <thead>
                   <tr>
-                    <th>Marca *</th>
-                    <th>Modelo *</th>
-                    <th>Versión *</th>
-                    <th>Cantidad *</th>
+                    <th>Marca <span>*</span></th>
+                    <th>Modelo <span>*</span></th>
+                    <th>Versión <span>*</span></th>
+                    <th>Cantidad <span>*</span></th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
@@ -179,6 +186,10 @@
       </footer>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Scripts -->
+    <script src="js/cooperatives.js"></script>
+    <script src="js/vehicles.js"></script>
+    <script src="js/cuit-validation.js"></script>
+    <script src="js/form-handler.js"></script>
   </body>
 </html>
