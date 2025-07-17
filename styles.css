@@ -192,7 +192,6 @@ span {
   display: flex;
   flex-direction: column;
   padding: 15px;
-  background-color: var(--light-gray);
   border-radius: 8px;
   border-left: 3px solid var(--aca-blue);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -324,7 +323,7 @@ span {
   margin-bottom: 15px;
   background-color: var(--white);
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
   overflow: hidden;
 }
 
@@ -384,6 +383,10 @@ span {
   border-radius: 6px;
   font-size: 16px;
   min-height: 44px;
+  /* Agregar estas propiedades para text overflow */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 #unitsTable td select {
@@ -395,6 +398,8 @@ span {
   -webkit-appearance: none;
   -moz-appearance: none;
   cursor: pointer;
+  /* Ajustar padding para dar espacio al ícono de dropdown */
+  padding-right: 40px;
 }
 
 #unitsTable td select:focus {
@@ -752,6 +757,15 @@ footer p {
     width: 100%;
     font-size: 14px;
     min-height: 38px;
+    /* Agregar text overflow para tablet/desktop también */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  #unitsTable td select {
+    /* Ajustar padding para versión desktop */
+    padding-right: 35px;
   }
 
   #unitsTable input[type="number"] {
@@ -791,6 +805,7 @@ footer p {
   .table-container {
     border-radius: 12px;
     margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .table-actions {
