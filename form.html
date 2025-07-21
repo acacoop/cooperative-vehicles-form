@@ -42,7 +42,7 @@
                 <div id="cooperativeDropdown" class="dropdown-results"></div>
               </div>
               <div class="form-group form-group-small">
-                <label for="cooperativeCode">Código</label>
+                <label for="cooperativeCode">Código <span>*</span></label>
                 <input
                   type="text"
                   id="cooperativeCode"
@@ -120,8 +120,8 @@
 
           <div class="form-section">
             <h3>Período de Entrega</h3>
-            <div class="form-group">
-              <label>Seleccione el período preferido:</label>
+            <div class="form-group" id="deliveryPeriodContainer">
+              <label>Período preferido <span>*</span></label>
               <div class="checkbox-group">
                 <label>
                   <input
@@ -189,7 +189,7 @@
     <!-- Scripts -->
     <script src="js/cooperatives.js"></script>
     <script src="js/vehicles.js"></script>
-    <script src="js/cuit-validation.js"></script>
+    <script src="js/form-validations.js"></script>
     <script src="js/form-handler.js"></script>
   </body>
 </html>

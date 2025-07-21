@@ -100,6 +100,9 @@ function initializeCooperativeSearch() {
       cooperativeCodeInput.value = "";
       clearCuitField();
       this.style.borderColor = "#e0e0e0";
+
+      // Limpiar validación del código
+      validateCooperativeCode();
       return;
     }
 
@@ -122,16 +125,25 @@ function initializeCooperativeSearch() {
         fillCuitAutomatically(exactMatch);
         hideDropdown();
         this.style.borderColor = "#28a745";
+
+        // Validar el código de cooperativa
+        validateCooperativeCode();
       } else {
         cooperativeCodeInput.value = "";
         clearCuitField();
         this.style.borderColor = "#e0e0e0";
+
+        // Limpiar validación del código
+        validateCooperativeCode();
       }
     } else {
       hideDropdown();
       cooperativeCodeInput.value = "";
       clearCuitField();
       this.style.borderColor = "#dc3545";
+
+      // Limpiar validación del código
+      validateCooperativeCode();
     }
   });
 
@@ -203,6 +215,9 @@ function initializeCooperativeSearch() {
     fillCuitAutomatically(coop);
     hideDropdown();
     selectedIndex = -1;
+
+    // Validar el código de cooperativa
+    validateCooperativeCode();
   }
 
   // Cerrar dropdown al hacer clic fuera

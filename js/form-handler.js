@@ -43,6 +43,9 @@ function addRow() {
   if (typeof initializeVehicleFields === "function") {
     initializeVehicleFields(row);
   }
+
+  // Inicializar validación en tiempo real para la nueva fila
+  initializeVehicleRowValidation(row);
 }
 
 function removeVehicleRow(button) {
@@ -161,10 +164,10 @@ function collectFormData() {
   const contactEmail = document.getElementById("contactEmail").value.trim();
   const contactPhone = document.getElementById("contactPhone").value.trim();
 
-  // Recopilar datos de vehículos
-  const vehicles = [];
+  // Recopilar datos de vehículos según el esquema requerido
+  const requestedUnits = [];
   const tableRows = document.querySelectorAll("#unitsTable tbody tr");
-  tableRows.forEach((row, index) => {
+  tableRows.forEach((row) => {
     const brand = row.querySelector('select[name="brand"]').value.trim();
     const model = row.querySelector('select[name="model"]').value.trim();
     const version = row.querySelector('select[name="version"]').value.trim();
@@ -172,8 +175,7 @@ function collectFormData() {
       row.querySelector('input[name="quantity"]').value.trim(),
     );
 
-    vehicles.push({
-      vehicleNumber: index + 1,
+    requestedUnits.push({
       brand,
       model,
       version,
@@ -186,23 +188,22 @@ function collectFormData() {
     'input[name="deliveryPeriod"]:checked',
   ).value;
 
-  // Observaciones
-  const observations = document.getElementById("observations").value.trim();
+  // Observaciones (notes en el esquema)
+  const notes = document.getElementById("observations").value.trim();
 
+  // Formato según el esquema requerido
   return {
-    cooperative: {
-      name: cooperativeName,
+    applicationDate: new Date().toISOString(),
+    cooperativeData: {
       code: cooperativeCode,
+      name: cooperativeName,
       cuit: cuit,
+      contactEmail: contactEmail,
+      contactPhone: contactPhone,
     },
-    contact: {
-      email: contactEmail,
-      phone: contactPhone,
-    },
-    vehicles: vehicles,
+    requestedUnits: requestedUnits,
     deliveryPeriod: deliveryPeriod,
-    observations: observations,
-    timestamp: new Date().toISOString(),
+    notes: notes,
   };
 }
 
@@ -218,10 +219,29 @@ async function sendToEndpoint(data) {
     });
 
     if (response.ok) {
-      const result = await response.json();
+      // Verificar si la respuesta tiene contenido antes de intentar parsear JSON
+      const responseText = await response.text();
+      let result = null;
+
+      if (responseText.trim()) {
+        try {
+          result = JSON.parse(responseText);
+        } catch (parseError) {
+          console.warn("La respuesta no es JSON válido:", responseText);
+          result = { message: "Solicitud procesada exitosamente" };
+        }
+      } else {
+        // Respuesta vacía pero exitosa
+        result = { message: "Solicitud procesada exitosamente" };
+      }
+
       return { success: true, data: result };
     } else {
-      return { success: false, error: `HTTP ${response.status}` };
+      const errorText = await response.text();
+      return {
+        success: false,
+        error: `HTTP ${response.status}: ${errorText || response.statusText}`,
+      };
     }
   } catch (error) {
     console.error("Error enviando datos:", error);
@@ -341,9 +361,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     initializeCooperativeSearch();
   }
 
-  if (typeof initializeCuitValidation === "function") {
-    initializeCuitValidation();
-  }
+  initializeFormValidations();
 
   if (typeof initializeVehicleSearch === "function") {
     initializeVehicleSearch();
