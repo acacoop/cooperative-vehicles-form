@@ -7,7 +7,7 @@ let COOPERATIVES = [];
 // Función para cargar cooperativas desde CSV
 async function loadCooperatives() {
   try {
-    const response = await fetch("../data/cooperatives.csv");
+    const response = await fetch("data/cooperatives.csv");
     const csvText = await response.text();
 
     // Parsear CSV (saltar la primera línea del header)
