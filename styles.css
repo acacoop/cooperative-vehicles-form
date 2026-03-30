@@ -36,7 +36,9 @@ body {
 }
 
 .container {
+  width: 100%;
   max-width: 100%;
+  min-width: 0;
   margin: 0 auto;
   padding: 0;
   background-color: var(--white);
@@ -844,28 +846,28 @@ footer p {
   /* Column widths */
   #unitsTable th:nth-child(1),
   #unitsTable td:nth-child(1) {
-    width: 25%;
+    width: 24%;
   }
 
   #unitsTable th:nth-child(2),
   #unitsTable td:nth-child(2) {
-    width: 25%;
+    width: 24%;
   }
 
   #unitsTable th:nth-child(3),
   #unitsTable td:nth-child(3) {
-    width: 25%;
+    width: 24%;
   }
 
   #unitsTable th:nth-child(4),
   #unitsTable td:nth-child(4) {
-    width: 20%;
+    width: 14%;
     min-width: 80px;
   }
 
   #unitsTable th:nth-child(5),
   #unitsTable td:nth-child(5) {
-    width: 20%;
+    width: 14%;
     min-width: 100px;
     text-align: center;
   }

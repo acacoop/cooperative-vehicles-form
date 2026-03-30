@@ -28,4 +28,4 @@ brand;model;version
 
 ## Desarrolladores
 
-El proyecto fue desarrollado por @maximogismondi en colaboración con @Regiar3dev. Cualquier contribución o mejora es bienvenida mente un pull request o issue en el repositorio.
+El proyecto fue desarrollado por @maximogismondi y @miguelmiguez en colaboración con @Regiar3dev. Cualquier contribución o mejora es bienvenida mente un pull request o issue en el repositorio.
